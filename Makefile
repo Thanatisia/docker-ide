@@ -9,7 +9,7 @@
 STAGE_1_IMAGE_NAME ?= thanatisia/docker-ide
 STAGE_1_IMAGE_TAG ?= latest
 STAGE_1_BUILD_ARGS ?= 
-STAGE_1_DOCKERFILE ?= docker/Dockerfiles/[base-distributions]/c.Dockerfile
+STAGE_1_DOCKERFILE ?= docker/Dockerfiles/[base-distributions]/programming-languages/c.Dockerfile
 
 #### Stage N (Multistaged build - Add-on Dockerfiles)
 STAGE_2_IMAGE_NAME ?= thanatisia/docker-ide
@@ -20,7 +20,7 @@ STAGE_2_BUILD_ARGS ?= --build-arg "USER_NAME=${USER}" \
 			  --build-arg "USER_SHELL=/bin/bash" \
 			  --build-arg "USER_DEFAULT_HOME=${HOME}" \
 			  --build-arg "USER_OPTS=-m" # Set Build Arguments
-STAGE_2_DOCKERFILE ?= docker/Dockerfiles/stage-2/user-mgmt.Dockerfile
+STAGE_2_DOCKERFILE ?= docker/Dockerfiles/[base-distributions]/add-on-images/essential-packages.Dockerfile
 CONTEXT ?= .
 
 ### Containers
@@ -36,6 +36,11 @@ CONTAINER_MOUNT_VOLUMES ?= \
 						   -v "${HOME}/.config/:${HOME}/.config/" # Mount Host System Volume; -v "[host-system-volume]:[container-volume]:[permissions]"
 CONTAINER_PASSTHROUGH_DEVICE ?= # --device "[host-system-device-file]:[container-mount-point]"
 
+### Remote Connection
+SERVER_USER_NAME = 
+SERVER_IP_ADDRESS = 
+SERVER_SHELL ?= /bin/bash
+
 SHELL := /bin/bash
 .PHONY := help build-stage-1 run
 .DEFAULT_RULES := help
@@ -47,6 +52,7 @@ help:
 	@echo -e "[+] build-stage-1 : Build Stage 1 image from multi-stage build"
 	@echo -e "[+] run : Startup a container from an image"
 	@echo -e "[+] enter : Chroot and enter the container"
+	@echo -e "[+] ssh : SSH and connect to the container from a remote host"
 	@echo -e "[+] start : Start the container if stopped and exists"
 	@echo -e "[+] stop : Stop the container if running"
 	@echo -e "[+] restart : Restart the container if running"
@@ -102,4 +108,8 @@ logs:
 enter:
 	## Chroot and enter the container
 	@docker exec -it ${CONTAINER_NAME} ${SHELL}
+
+ssh:
+	## SSH and connect to the container from a remote host
+	@ssh -t ${SERVER_USER_NAME}@${SERVER_IP_ADDRESS} "docker exec -it ${CONTAINER_NAME} ${SERVER_SHELL}"
 

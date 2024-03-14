@@ -121,3 +121,8 @@
     - Updated 'customization.md' in 'docs/'
         + Added example solution for bug/error: file created by container not readable on exit
 
+#### 2201H
+- Updates
+    - Updated 'Makefile'
+        + Added target 'ssh' to ssh into the container (Trial - For security reasons, the template will not have any defaults)
+
