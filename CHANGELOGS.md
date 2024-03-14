@@ -97,3 +97,23 @@
     - Updated 'customization.md' in 'docs/'
         + Added notes and warnings pertaining to volume mounting order
 
+#### 1629H
+- New
+    + Added new directory 'agnostic/' in 'docker/Dockerfiles' for all non-Operating System/distribution-specific patch Dockerfiles
+    - Added new directory 'add-on-images/' in 'docker/Dockerfiles/alpine' for all alpine-related patch Dockerfiles
+        + Added new Dockerfile 'essential-packages.Dockerfile' that will install essentials into the base IDE image of your choice
+    - Added new directory 'add-on-images/' in 'docker/Dockerfiles/archlinux' for all archlinux-related patch Dockerfiles
+        + Added new Dockerfile 'essential-packages.Dockerfile' that will install essentials into the base IDE image of your choice
+    - Added new directory 'add-on-images/' in 'docker/Dockerfiles/debian' for all debian-related patch Dockerfiles
+        + Added new Dockerfile 'essential-packages.Dockerfile' that will install essentials into the base IDE image of your choice
+    + Added new directory 'programming-languages/' in 'docker/Dockerfiles/alpine' to hold the docker image templates for all Programming Languages development environments; This is using alpine as the package management backend
+    + Added new directory 'programming-languages/' in 'docker/Dockerfiles/archlinux' to hold the docker image templates for all Programming Languages development environments; This is using archlinux as the package management backend
+    + Added new directory 'programming-languages/' in 'docker/Dockerfiles/debian' to hold the docker image templates for all Programming Languages development environments; This is using debian as the package management backend
+
+- Updates
+    + Migrated dockerfile 'user-mgmt.Dockerfile' from 'docker/Dockerfiles/stage-2/' => 'docker/Dockerfiles/agnostic/'
+    + Migrated dockerfile 'c.Dockerfile' from 'docker/Dockerfiles/alpine/' => 'docker/Dockerfiles/alpine/programming-languages/'
+    + Migrated dockerfile 'c.Dockerfile' from 'docker/Dockerfiles/archlinux/' => 'docker/Dockerfiles/archlinux/programming-languages/'
+    + Migrated dockerfile 'c.Dockerfile' from 'docker/Dockerfiles/debian/' => 'docker/Dockerfiles/debian/programming-languages/'
+
+
