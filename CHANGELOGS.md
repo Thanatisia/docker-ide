@@ -68,3 +68,8 @@
         + Updated container name
         + Updated Dockerfile path
 
+#### 1415H
+- Updates
+    - Updated 'Makefile'
+        + Changed 'CONTAINER_NAME' to be consistent with docker-compose
+

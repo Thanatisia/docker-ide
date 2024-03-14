@@ -26,7 +26,7 @@ CONTEXT ?= .
 ### Containers
 CONTAINER_IMAGE_NAME ?= thanatisia/docker-ide
 CONTAINER_IMAGE_TAG ?= latest
-CONTAINER_NAME ?= dev-env-c
+CONTAINER_NAME ?= dev-env
 CONTAINER_OPTS ?= \
 				  --restart=unless-stopped \
 				  --workdir=/src # Other Options; i.e. --user=${USER}
