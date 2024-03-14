@@ -28,6 +28,7 @@
         --restart=unless-stopped \
         -e "ENV_VAR=value" \
         --env-file="/path/to/environment-file" \
+        --workdir="[container-working-directory]" \
         -p "[host-system-port]:[container-port]" \
         -v "[host-system-volume]:[container-volume]" \
         [author]/[image-name]:[image-tag|version]
@@ -64,12 +65,14 @@
 ### Project fileystem structure
 - root/
     - README.md
-    - docker-compose.yaml
+    - docker-compose.yaml : Main docker-compose environment script/file
+    - Makefile : Convenient make build file with targets/recipes to simplify running docker run
     - docs/ : Contains documentation folders
         + language-setup.md : Programming Language Development Environment setup documentation
     - docker/ : Contains docker-based resources/source files
         - Dockerfiles/ : Contains all docker image templates (Dockerfile)
-            + c.Dockerfile : Image Template for setting up a working C programming language development environment
+            - archlinux/ : The base image distribution of the dockerfile image template; This is using ArchLinux
+                + c.Dockerfile : Image Template for setting up a working C programming language development environment
     - src/ : This is the source directory that will be mounted into the container
         - c : This contains your C programming language source files
 

@@ -9,6 +9,9 @@ services:
       context: .
       dockerfile: docker/Dockerfiles/c.Dockerfile
     restart: unless-stopped
+    working_dir: /src ## Set current working directory
+    stdin_open: true # Equivalent to '-i' in 'docker run -itd'
+    tty: true # Equivalent to '-t' in 'docker run -itd'
     # ports:
       ## Port Forward/Translate/Map from host system to container
       ## [host-ip-address]:[host-system-port]:[container-port]
