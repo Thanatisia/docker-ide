@@ -73,3 +73,7 @@
     - Updated 'Makefile'
         + Changed 'CONTAINER_NAME' to be consistent with docker-compose
 
+#### 1430H
+- New
+    - Added new document 'customization.md' in 'docs/' with documentation on customizing your docker-based IDE
+
