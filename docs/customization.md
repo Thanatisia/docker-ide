@@ -4,6 +4,13 @@
 Tips and Tricks for customizing your IDE before and after starting up your container
 ```
 
+## Notes
+- When mounting volumes, please take note of the volume mount order
+    - The volume mounting process is iterative, this means that there may be directory conflict if a directory is mounted before/after another intended directory
+        - i.e.
+            - Mounting '$HOME/.config' before '$HOME'
+                + by mounting the .config folder befor the root, the root will overwrite the mounted configuration and the filesystem will become confused
+
 ## Customization
 ### Before starting up the container
 - Prepare to synchronize the container's files to the host system

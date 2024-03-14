@@ -92,3 +92,8 @@
         + Added more information to 'CONTAINER_IMAGE_TAG'
         + Added the instructions for usage and implementation of multi-staged builds
 
+#### 1540H
+- Updates
+    - Updated 'customization.md' in 'docs/'
+        + Added notes and warnings pertaining to volume mounting order
+
