@@ -10,6 +10,11 @@ Tips and Tricks for customizing your IDE before and after starting up your conta
         - i.e.
             - Mounting '$HOME/.config' before '$HOME'
                 + by mounting the .config folder befor the root, the root will overwrite the mounted configuration and the filesystem will become confused
+- If you encountered a read permission error with a file created by the container after mounting
+    - Change the permission of the profiles folder to '755'
+        ```bash
+        sudo chmod 755 -R [profiles-directory]
+        ```
 
 ## Customization
 ### Before starting up the container

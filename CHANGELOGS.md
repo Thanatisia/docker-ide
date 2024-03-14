@@ -116,4 +116,8 @@
     + Migrated dockerfile 'c.Dockerfile' from 'docker/Dockerfiles/archlinux/' => 'docker/Dockerfiles/archlinux/programming-languages/'
     + Migrated dockerfile 'c.Dockerfile' from 'docker/Dockerfiles/debian/' => 'docker/Dockerfiles/debian/programming-languages/'
 
+#### 1659H
+- Updates
+    - Updated 'customization.md' in 'docs/'
+        + Added example solution for bug/error: file created by container not readable on exit
 
