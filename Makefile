@@ -4,20 +4,36 @@
 ## Variables/Ingredients
 
 ### Images
-IMAGE_NAME ?= thanatisia/docker-ide
-IMAGE_TAG ?= c
-BUILD_ARGS ?= 
+
+#### Stage 1 (Base)
+STAGE_1_IMAGE_NAME ?= thanatisia/docker-ide
+STAGE_1_IMAGE_TAG ?= latest
+STAGE_1_BUILD_ARGS ?= 
 STAGE_1_DOCKERFILE ?= docker/Dockerfiles/[base-distributions]/c.Dockerfile
-STAGE_2_DOCKERFILE ?= 
+
+#### Stage N (Multistaged build - Add-on Dockerfiles)
+STAGE_2_IMAGE_NAME ?= thanatisia/docker-ide
+STAGE_2_IMAGE_TAG ?= c
+STAGE_2_BUILD_ARGS ?= --build-arg "USER_NAME=${USER}" \
+              --build-arg "USER_PRIMARY_GROUP=wheel" \
+			  --build-arg "USER_SECONDARY_GROUPS=users" \
+			  --build-arg "USER_SHELL=/bin/bash" \
+			  --build-arg "USER_DEFAULT_HOME=${HOME}" \
+			  --build-arg "USER_OPTS=-m" # Set Build Arguments
+STAGE_2_DOCKERFILE ?= docker/Dockerfiles/stage-2/user-mgmt.Dockerfile
 CONTEXT ?= .
 
 ### Containers
 CONTAINER_IMAGE_NAME ?= thanatisia/docker-ide
-CONTAINER_IMAGE_TAG ?= c
+CONTAINER_IMAGE_TAG ?= latest
 CONTAINER_NAME ?= dev-env-c
-CONTAINER_OPTS ?= --restart=unless-stopped --workdir=/src
-CONTAINER_PORT_FORWARDING ?=    # -p "[host-ip-address]:[host-system-port]:[container-port]"
-CONTAINER_MOUNT_VOLUMES ?= -v "${PWD}/src/c:/src"     # -v "[host-system-volume]:[container-volume]:[permissions]"
+CONTAINER_OPTS ?= \
+				  --restart=unless-stopped \
+				  --workdir=/src # Other Options; i.e. --user=${USER}
+CONTAINER_PORT_FORWARDING ?=    # Port Forward/Translate/Map from host system to container; -p "[host-ip-address]:[host-system-port]:[container-port]"
+CONTAINER_MOUNT_VOLUMES ?= \
+						   -v "${PWD}/src:/src" \
+						   -v "${HOME}/.config/:${HOME}/.config/" # Mount Host System Volume; -v "[host-system-volume]:[container-volume]:[permissions]"
 CONTAINER_PASSTHROUGH_DEVICE ?= # --device "[host-system-device-file]:[container-mount-point]"
 
 SHELL := /bin/bash
@@ -30,6 +46,7 @@ help:
 	@echo -e "[+] help : Display Help message"
 	@echo -e "[+] build-stage-1 : Build Stage 1 image from multi-stage build"
 	@echo -e "[+] run : Startup a container from an image"
+	@echo -e "[+] enter : Chroot and enter the container"
 	@echo -e "[+] start : Start the container if stopped and exists"
 	@echo -e "[+] stop : Stop the container if running"
 	@echo -e "[+] restart : Restart the container if running"
@@ -39,15 +56,16 @@ help:
 build-stage-1:
 	## Build image from Dockerfile
 	@docker build \
-		-t ${IMAGE_NAME}:${IMAGE_TAG} \
-		${BUILD_ARGS} \
+		-t ${STAGE_1_IMAGE_NAME}:${STAGE_1_IMAGE_TAG} \
+		${STAGE_1_BUILD_ARGS} \
 		-f ${STAGE_1_DOCKERFILE} \
 		${CONTEXT}
 
 build-stage-2:
 	## Build stage 2 image from Dockerfile
 	@docker build \
-		-t ${IMAGE_NAME}:${IMAGE_TAG} \
+		-t ${STAGE_2_IMAGE_NAME}:${STAGE_2_IMAGE_TAG} \
+		${STAGE_2_BUILD_ARGS} \
 		-f ${STAGE_2_DOCKERFILE} \
 		${CONTEXT}
 
@@ -80,4 +98,8 @@ remove:
 logs:
 	## Display logs of the container
 	@docker logs ${CONTAINER_NAME}
+
+enter:
+	## Chroot and enter the container
+	@docker exec -it ${CONTAINER_NAME} ${SHELL}
 

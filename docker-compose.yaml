@@ -3,11 +3,11 @@
 version: "3.7"
 services:
   c:
-    image: c
-    container_name: dev-env-c
+    image: dev-env:c
+    container_name: dev-env
     build:
       context: .
-      dockerfile: docker/Dockerfiles/c.Dockerfile
+      dockerfile: docker/Dockerfiles/[base-distribution-image]/c.Dockerfile
     restart: unless-stopped
     working_dir: /src ## Set current working directory
     stdin_open: true # Equivalent to '-i' in 'docker run -itd'

@@ -42,3 +42,29 @@
     - Updated dockerfile 'c.Dockerfile' in 'docker/Dockerfiles/archlinux'
         + Added vim (This is your text editor)
 
+#### 1240H
+- New
+    - Added new directory 'stage-2' in 'docker/Dockerfiles' for holding Stage 2 add-on Dockerfile 'patches' designed to be built on top of the base (stage-1) IDE images
+        - Added new Dockerfile 'user-mgmt.Dockerfile'
+            + Uses the built image 'thanatisia/docker-ide:latest' by default, you can change this to what you need
+            + Contains arguments (local variables) for the user information to create
+            + Contains a RUN instruction to create a new user when built on top of the base image
+
+- Updates
+    - Updated document 'README.md'
+        + Added documentations for the Makefile
+    - Updated 'Makefile'
+        + Added default build arguments for user management
+        + Added useful default container options 
+        + Added useful default volume mounts (i.e. user configuration folder mount)
+        + Added new target/recipe 'enter' to chroot into the container on run
+        + Prepended 'IMAGE_NAME', 'IMAGE_TAG' and 'BUILD_ARGS' with 'STAGE_1_' to distinctly separate the staged build information (by default, its only the base stage (stage 1))
+        + Added 'STAGE_2_*' variables for multistage add-on Dockerfiles
+    - Updated Dockerfile 'c.Dockerfile' in 'docker/Dockerfiles/alpine'
+        + Added new dependencies
+    - Updated document 'docker-compose.yaml'
+        - Updated image name to be constant with the documentation
+            + Previously the target image name is 'c'
+        + Updated container name
+        + Updated Dockerfile path
+

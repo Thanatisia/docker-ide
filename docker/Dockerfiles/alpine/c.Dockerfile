@@ -3,7 +3,7 @@ FROM alpine:latest AS base
 
 # Update package manager database, Upgrade repository packages and Install dependencies
 RUN apk update && apk upgrade \
-    && apk add bash git make alpine-sdk gcc clang vim
+    && apk add bash git make alpine-sdk gcc clang shadow sudo coreutils
 
 # Set Entry Point
 ENTRYPOINT \
