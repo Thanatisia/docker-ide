@@ -30,3 +30,15 @@
     - Updated document 'docker-compose.yaml'
         + Added '--stdin_open=true', 'tty=true' and 'working_dir=/src' to dockerfile options
 
+#### 1016H
+- New
+    - Added new directory 'debian' in 'docker/Dockerfiles' for Debian-based dockerfiles
+        + Added new Dockerfile 'c.Dockerfile' in for C programming language development environment
+    - Added new directory 'alpine' in 'docker/Dockerfiles' for Debian-based dockerfiles
+        + Added new Dockerfile 'c.Dockerfile' in for C programming language development environment
+- Updates
+    - Updated 'Makefile'
+        + Set 'STAGE_1_DOCKERFILE' to a default generalized value
+    - Updated dockerfile 'c.Dockerfile' in 'docker/Dockerfiles/archlinux'
+        + Added vim (This is your text editor)
+

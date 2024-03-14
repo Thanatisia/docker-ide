@@ -7,7 +7,7 @@
 IMAGE_NAME ?= thanatisia/docker-ide
 IMAGE_TAG ?= c
 BUILD_ARGS ?= 
-STAGE_1_DOCKERFILE ?= docker/Dockerfiles/archlinux/c.Dockerfile
+STAGE_1_DOCKERFILE ?= docker/Dockerfiles/[base-distributions]/c.Dockerfile
 STAGE_2_DOCKERFILE ?= 
 CONTEXT ?= .
 

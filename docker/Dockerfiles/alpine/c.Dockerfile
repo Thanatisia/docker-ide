@@ -1,9 +1,9 @@
 # Dockerfile image template for setting up a C programming integrated development environment (IDE)
-FROM archlinux:latest AS base
+FROM alpine:latest AS base
 
 # Update package manager database, Upgrade repository packages and Install dependencies
-RUN pacman -Syu --noconfirm && \
-    pacman -S bash git make base-devel gcc clang vim --noconfirm
+RUN apk update && apk upgrade \
+    && apk add bash git make alpine-sdk gcc clang vim
 
 # Set Entry Point
 ENTRYPOINT \

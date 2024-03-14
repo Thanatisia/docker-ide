@@ -1,9 +1,9 @@
 # Dockerfile image template for setting up a C programming integrated development environment (IDE)
-FROM archlinux:latest AS base
+FROM debian:latest AS base
 
 # Update package manager database, Upgrade repository packages and Install dependencies
-RUN pacman -Syu --noconfirm && \
-    pacman -S bash git make base-devel gcc clang vim --noconfirm
+RUN apt update -y && apt upgrade -y && \
+    apt install -y bash git make build-essential gcc clang vim
 
 # Set Entry Point
 ENTRYPOINT \
