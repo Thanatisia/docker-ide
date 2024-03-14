@@ -101,13 +101,13 @@
 - `CONTAINER_OPTS` : Specify all additional options to parse into the container startup process
     - Default Values:
         + `--restart=unless-stopped`
-        + `--workdir=/src`
+        + `--workdir=/projects`
     - Other Options:
         + `--user=${USER}`
 - `CONTAINER_PORT_FORWARDING` : Port Forward/Translate/Map from host system to container; `-p "[host-ip-address]:[host-system-port]:[container-port]"`
 - `CONTAINER_MOUNT_VOLUMES`   : Mount Host System Volume; `-v "[host-system-volume]:[container-volume]:[permissions]"`
     - Default Values:
-        + -v "${PWD}/src/:/src"
+        + -v "${PWD}/projects/:/projects"
         + -v "${HOME}/.config/:${HOME}/.config/"
 + `CONTAINER_PASSTHROUGH_DEVICE` : Passthrough a device/bus file from the host system to the container; `--device "[host-system-device-file]:[container-mount-point]"`
 
@@ -146,7 +146,7 @@
         - Dockerfiles/ : Contains all docker image templates (Dockerfile)
             - archlinux/ : The base image distribution of the dockerfile image template; This is using ArchLinux
                 + c.Dockerfile : Image Template for setting up a working C programming language development environment
-    - src/ : This is the source directory that will be mounted into the container
+    - projects/ : This is the source directory that will be mounted into the container containing all your applications and projects
         - c : This contains your C programming language source files
 
 ## Wiki

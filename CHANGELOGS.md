@@ -77,3 +77,12 @@
 - New
     - Added new document 'customization.md' in 'docs/' with documentation on customizing your docker-based IDE
 
+#### 1457H
+- Updates
+    - Updated 'README.md'
+        - Renamed all occurences of 'src/' to 'projects/'
+            + Reasoning: Scalability, 'src' is generally referring to source codes and source files within a project
+    - Updated 'Makefile'
+        - Renamed all occurences of 'src/' to 'projects/'
+            + Reasoning: Scalability, 'src' is generally referring to source codes and source files within a project
+

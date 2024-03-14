@@ -29,10 +29,10 @@ CONTAINER_IMAGE_TAG ?= latest
 CONTAINER_NAME ?= dev-env
 CONTAINER_OPTS ?= \
 				  --restart=unless-stopped \
-				  --workdir=/src # Other Options; i.e. --user=${USER}
+				  --workdir=/projects # Other Options; i.e. --user=${USER}
 CONTAINER_PORT_FORWARDING ?=    # Port Forward/Translate/Map from host system to container; -p "[host-ip-address]:[host-system-port]:[container-port]"
 CONTAINER_MOUNT_VOLUMES ?= \
-						   -v "${PWD}/src:/src" \
+						   -v "${PWD}/projects:/projects" \
 						   -v "${HOME}/.config/:${HOME}/.config/" # Mount Host System Volume; -v "[host-system-volume]:[container-volume]:[permissions]"
 CONTAINER_PASSTHROUGH_DEVICE ?= # --device "[host-system-device-file]:[container-mount-point]"
 
