@@ -94,7 +94,7 @@
 #### Containers
 - `CONTAINER_IMAGE_NAME` : Specify the docker image to startup the container with
     + Default: thanatisia/docker-ide
-- `CONTAINER_IMAGE_TAG` : Specify the tag/version of the docker image you selected to startup the container with
+- `CONTAINER_IMAGE_TAG` : Specify the tag/version of the docker image you selected to startup the container with; Change this to switch between image versions if you are using multi-stage builds
     + Default: [programming-language]
 - `CONTAINER_NAME` : Specify the name of the container to startup
     + Default: dev-env
@@ -129,6 +129,16 @@
         + -k : Keep executing even if error is encountered
     ```bash
     make -k stop remove build-stage-1 run enter
+    ```
+
+- Multi-stage Build
+    - Explanation
+        + the makefile will perform a docker build on the specified stage 1 Dockerfile (docker image template file) to build a stage 1 base image. Generally, this will be your primary IDE at its core 
+        - then, makefile will build the stage 2 dockerfile templates that is built on top of the stage 1 images, followed by stage 3, which is built on top of stage 2
+            + This process will continue until the building of the stage N template which is based on the stage (N-1) Dockerfile
+            + On completion, the final product of the multi-staged build will be a docker image/environment with the features added by all the stages stacked on top of the Base (stage 1) Image
+    ```bash
+    make build-stage-1 build-stage-2 ... build-stage-N
     ```
 
 ## Documentation

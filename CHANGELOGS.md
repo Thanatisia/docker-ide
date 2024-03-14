@@ -86,3 +86,9 @@
         - Renamed all occurences of 'src/' to 'projects/'
             + Reasoning: Scalability, 'src' is generally referring to source codes and source files within a project
 
+#### 1516H
+- Updates
+    - Updated 'README.md'
+        + Added more information to 'CONTAINER_IMAGE_TAG'
+        + Added the instructions for usage and implementation of multi-staged builds
+
