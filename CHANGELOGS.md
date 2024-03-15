@@ -2,6 +2,7 @@
 
 ## Table of Contents
 + [2024-03-14](#2024-03-14)
++ [2024-03-15](#2024-03-15)
 
 ## Entry Logs
 ### 2024-03-14
@@ -125,4 +126,10 @@
 - Updates
     - Updated 'Makefile'
         + Added target 'ssh' to ssh into the container (Trial - For security reasons, the template will not have any defaults)
+
+### 2024-03-15
+#### 1058H
+- Updates
+    - Updated document 'README.md'
+        + Added documentations on the new 'ssh' target and dependent network/security-related variables
 
