@@ -133,3 +133,8 @@
     - Updated document 'README.md'
         + Added documentations on the new 'ssh' target and dependent network/security-related variables
 
+#### 1343H
+- Updates
+    - Updated Dockerfile 'essential-packages.Dockerfile' in 'docker/Dockerfiles/debian'
+        + Fixed neovim dependencies when building Neovim from source in a Debian environment
+
