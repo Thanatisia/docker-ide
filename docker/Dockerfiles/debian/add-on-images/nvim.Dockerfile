@@ -1,5 +1,5 @@
-# Stage 2 Post-setup Dockerfile image template for installing essential packages to an IDE base image
-FROM thanatisia/docker-ide:latest AS stage-2
+# Stage 2 Post-setup Dockerfile image template for building Neovim to the base image (Change the base image name accordingly)
+FROM thanatisia/docker-ide:latest AS neovim
 
 # Set Arguments (Local Variables)
 
@@ -9,5 +9,4 @@ RUN apt install -y clang gcc ninja-build gettext cmake unzip curl build-essentia
     && cd neovim \
     && make CMAKE_BUILD_TYPE=RelWithDebInfo -j4 \
     && make install
-
 
