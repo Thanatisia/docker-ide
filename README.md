@@ -111,12 +111,19 @@
         + -v "${HOME}/.config/:${HOME}/.config/"
 + `CONTAINER_PASSTHROUGH_DEVICE` : Passthrough a device/bus file from the host system to the container; `--device "[host-system-device-file]:[container-mount-point]"`
 
+#### Remote Server Connection
++ `SERVER_USER_NAME` : Set the username of the server hosting the docker container instance you wish to connect to
++ `SERVER_IP_ADDRESS`  : Set the IP address of the server hosting the docker instance you wish to access
+- `SERVER_SHELL` : Set the shell to use to access the interactive tty of the container  
+    + Default: /bin/bash
+
 ### Instructions/Rules/Targets
 + help : Display Help message
 + build-stage-1 : Build Stage 1 image from multi-stage build
 + build-stage-N : Build Stage N image from multi-stage build
 + run : Startup a container from an image
 + enter : Chroot and enter the container
++ ssh : SSH and connect to the container from a remote host
 + start : Start the container if stopped and exists
 + stop : Stop the container if running
 + restart : Restart the container if running
@@ -139,6 +146,14 @@
             + On completion, the final product of the multi-staged build will be a docker image/environment with the features added by all the stages stacked on top of the Base (stage 1) Image
     ```bash
     make build-stage-1 build-stage-2 ... build-stage-N
+    ```
+
+- Connect and chroot to a remote docker server/session/instance
+    ```bash
+    SERVER_USER_NAME=[your-target-username] \
+    SERVER_IP_ADDRESS=[your-target-server-ip|domain] \
+    SERVER_SHELL=[your-target-shell (default: /bin/bash)] \
+    make ssh
     ```
 
 ## Documentation
