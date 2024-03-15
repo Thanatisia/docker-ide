@@ -138,3 +138,7 @@
     - Updated Dockerfile 'essential-packages.Dockerfile' in 'docker/Dockerfiles/debian'
         + Fixed neovim dependencies when building Neovim from source in a Debian environment
 
+#### 1446H
+- New
+    - Added new (temporary - testing for long term usefulness) dockerfile dedicated for Building Neovim from source 'neovim.Dockerfile' in 'docker/Dockerfiles/debian/add-on-images/'
+
