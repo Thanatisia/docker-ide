@@ -142,3 +142,8 @@
 - New
     - Added new (temporary - testing for long term usefulness) dockerfile dedicated for Building Neovim from source 'neovim.Dockerfile' in 'docker/Dockerfiles/debian/add-on-images/'
 
+#### 1355H
+- Updates
+    - Updated Dockerfile 'nvim.Dockerfile' in 'docker/Dockerfiles/debian/add-on-images/'
+        + Fixed dependencies
+
