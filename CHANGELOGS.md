@@ -156,3 +156,12 @@
     - Updated document 'README.md'
         + Added Quickstart reference steps to drop in and use it
 
+#### 1527H
+- New
+    + Added new document 'framework-setup.md' in 'docs/' : Documentation of setting up of development environments for Framework and Library application development
+    + Added new document 'project-environment-setup.md' in 'docs/' : Documentation of setting up of development environments for Frequently-made project ideas
+- Updates
+    - Updated document 'README.md'
+        - Added optional step to Quickstart 
+            + Add an alias mapping to docker exec into the docker container
+

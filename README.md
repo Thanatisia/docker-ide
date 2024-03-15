@@ -122,6 +122,13 @@
         docker exec -it [container-name] [shell]
         ```
 
+- (Optional) Add an alias mapping to the container's shell into your shell's resource control (rc) file for easy access
+    - Notes
+        + Useful for quick access to the development environment
+    ```bash
+    alias enter_dev_env="docker exec -it [your-container-name] $SHELL"
+    ```
+
 ## Makefile
 ### Variables
 #### General
