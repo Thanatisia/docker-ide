@@ -1,9 +1,9 @@
-# Dockerfile image template for setting up a C programming integrated development environment (IDE)
+# Dockerfile image template for setting up a Rust programming integrated development environment (IDE)
 FROM alpine:latest AS base
 
 # Update package manager database, Upgrade repository packages and Install dependencies
 RUN apk update && apk upgrade \
-    && apk add --no-cache bash git make alpine-sdk gcc clang shadow sudo coreutils
+    && apk add bash git make alpine-sdk shadow sudo coreutils rust rust-analyzer cargo
 
 # Set Entry Point
 ENTRYPOINT \

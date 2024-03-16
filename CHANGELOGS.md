@@ -3,6 +3,7 @@
 ## Table of Contents
 + [2024-03-14](#2024-03-14)
 + [2024-03-15](#2024-03-15)
++ [2024-03-16](#2024-03-16)
 
 ## Entry Logs
 ### 2024-03-14
@@ -164,4 +165,25 @@
     - Updated document 'README.md'
         - Added optional step to Quickstart 
             + Add an alias mapping to docker exec into the docker container
+
+### 2024-03-16
+#### 1012H
+- New
+    - Added new Dockerfiles to 'docker/Dockerfiles/alpine/programming-languages/'
+        + python.Dockerfile : for Python programming language development environment
+        + rust.Dockerfile   : for Rust programming language development environment
+    - Added new directory 'makefiles' in 'docs/' for holding Makefile templates for easy access to some frequently-used development environment usages (programming language, frameworks etc)
+        + c.Makefile    : for C programming language development environment
+        + py.Makefile   : for Python programming language development environment
+        + rust.Makefile : for Rust programming language development environment
+    - Added new directory 'compose' in 'docker/' to hold all docker-compose template/example configuration files
+        + Added new docker-compose file 'c.docker-compose.yaml' for starting up a C programming development environment via docker-compose
+        + Added new docker-compose file 'python.docker-compose.yaml' for starting up a Python scripting/programming development environment via docker-compose
+        + Added new docker-compose file 'rust.docker-compose.yaml' for starting up a Rust programming development environment via docker-compose
+
+- Updates
+    - Updated document 'README.md'
+        + Added pre-requisite steps when starting up using docker-compose
+    - Updated Dockerfile 'c.Dockerfile' in 'docker/Dockerfiles/alpine/programming-languages/'
+        + Added '--no-cache' to apk add to compress the image size
 

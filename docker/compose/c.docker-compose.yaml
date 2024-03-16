@@ -2,32 +2,6 @@
 # in this docker-based local/remote (cloud) Integrated Development Environment (IDE)
 version: "3.7"
 services:
-  ####################################################################################
-  # Template                                                                         #
-  # - Please refer to the docker-compose configuration templates in 'docker/compose' #
-  ####################################################################################
-  [programming-language]:
-    image: author-name/docker-ide:[programming-language]
-    container_name: dev-env-[programming-language]
-    build:
-      context: .
-      dockerfile: docker/Dockerfiles/[base-distribution]/programming-languages/[programming-language].Dockerfile
-    restart: unless-stopped
-    working_dir: /projects ## Set current working directory
-    stdin_open: true # Equivalent to '-i' in 'docker run -itd'
-    tty: true # Equivalent to '-t' in 'docker run -itd'
-    # ports:
-      ## Port Forward/Translate/Map from host system to container
-      ## [host-ip-address]:[host-system-port]:[container-port]
-    volumes:
-      ## Mount volumes from host system into container
-      ## [host-system-volume]:[container-volume]:[permissions]
-      - ${PWD}/projects/:/projects
-      - ${HOME}/.config:${HOME}/.config
-
-  ###############################################
-  # For starting up a C Development Environment #
-  ###############################################
   c:
     image: thanatisia/docker-ide:c
     container_name: dev-env-c
@@ -44,10 +18,6 @@ services:
       - ${PWD}/projects/c:/projects
       - ${PWD}/profiles/dev-env/:/root
       - ${HOME}/.config:/root/.config
-
-  ####################################################
-  # For starting up a Python Development Environment #
-  ####################################################
   python:
     image: thanatisia/docker-ide:python
     container_name: dev-env-python
@@ -64,10 +34,6 @@ services:
       - ${PWD}/projects/python:/projects
       - ${PWD}/profiles/dev-env/:/root
       - ${HOME}/.config:/root/.config
-
-  ##################################################
-  # For starting up a Rust Development Environment #
-  ##################################################
   rust:
     image: thanatisia/docker-ide:rust
     container_name: dev-env-rust
