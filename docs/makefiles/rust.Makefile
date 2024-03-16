@@ -7,9 +7,9 @@
 
 #### Stage 1 (Base)
 STAGE_1_IMAGE_NAME ?= thanatisia/docker-ide
-STAGE_1_IMAGE_TAG ?= alpine
+STAGE_1_IMAGE_TAG ?= [base-distributions]
 STAGE_1_BUILD_ARGS ?= 
-STAGE_1_DOCKERFILE ?= docker/Dockerfiles/alpine/programming-languages/rust.Dockerfile
+STAGE_1_DOCKERFILE ?= docker/Dockerfiles/[base-distributions]/programming-languages/rust.Dockerfile
 
 #### Stage N (Multistaged build - Add-on Dockerfiles)
 STAGE_2_IMAGE_NAME ?= thanatisia/docker-ide
@@ -20,7 +20,7 @@ STAGE_2_BUILD_ARGS ?= # --build-arg "USER_NAME=${USER}" \
 			  --build-arg "USER_SHELL=/bin/bash" \
 			  --build-arg "USER_DEFAULT_HOME=${HOME}" \
 			  --build-arg "USER_OPTS=-m" # Set Build Arguments
-STAGE_2_DOCKERFILE ?= docker/Dockerfiles/alpine/add-on-images/nvim.Dockerfile
+STAGE_2_DOCKERFILE ?= docker/Dockerfiles/[base-distributions]/add-on-images/nvim.Dockerfile
 CONTEXT ?= .
 
 ### Containers
@@ -33,8 +33,7 @@ CONTAINER_OPTS ?= \
 CONTAINER_PORT_FORWARDING ?=    # Port Forward/Translate/Map from host system to container; -p "[host-ip-address]:[host-system-port]:[container-port]"
 CONTAINER_MOUNT_VOLUMES ?= \
 						   -v "${PWD}/projects/rust:/projects" \
-						   -v "${PWD}/profiles/dev-env/:/root" \
-						   -v "${HOME}/.config/:/root/.config/" # Mount Host System Volume; -v "[host-system-volume]:[container-volume]:[permissions]"
+						   -v "${HOME}/.config/:${HOME}/.config/" # Mount Host System Volume; -v "[host-system-volume]:[container-volume]:[permissions]"
 CONTAINER_PASSTHROUGH_DEVICE ?= # --device "[host-system-device-file]:[container-mount-point]"
 
 ### Remote Connection

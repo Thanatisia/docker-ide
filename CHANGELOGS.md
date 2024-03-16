@@ -196,3 +196,15 @@
     - Updated docker-compose file 'rust.docker-compose.yaml' in 'docker/compose/'
         + Removed the other service entries except rust
 
+#### 2257H
+- Updates
+    - Updated Makefile 'c.Makefile' in 'docs/makefiles'
+        + Replaced 'alpine' to '[base-distributions]'
+        + Replaced mount directory '/root' to '${HOME}'
+    - Updated Makefile 'py.Makefile' in 'docs/makefiles'
+        + Replaced 'alpine' to '[base-distributions]'
+        + Replaced mount directory '/root' to '${HOME}'
+    - Updated Makefile 'rust.Makefile' in 'docs/makefiles'
+        + Replaced 'alpine' to '[base-distributions]'
+        + Replaced mount directory '/root' to '${HOME}'
+
