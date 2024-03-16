@@ -42,8 +42,7 @@ services:
       ## Mount volumes from host system into container
       ## [host-system-volume]:[container-volume]:[permissions]
       - ${PWD}/projects/c:/projects
-      - ${PWD}/profiles/dev-env/:/root
-      - ${HOME}/.config:/root/.config
+      - ${HOME}/.config:${HOME}/.config
 
   ####################################################
   # For starting up a Python Development Environment #
@@ -62,8 +61,7 @@ services:
       ## Mount volumes from host system into container
       ## [host-system-volume]:[container-volume]:[permissions]
       - ${PWD}/projects/python:/projects
-      - ${PWD}/profiles/dev-env/:/root
-      - ${HOME}/.config:/root/.config
+      - ${HOME}/.config:${HOME}/.config
 
   ##################################################
   # For starting up a Rust Development Environment #
@@ -82,6 +80,5 @@ services:
       ## Mount volumes from host system into container
       ## [host-system-volume]:[container-volume]:[permissions]
       - ${PWD}/projects/rust:/projects
-      - ${PWD}/profiles/dev-env/:/root
-      - ${HOME}/.config:/root/.config
+      - ${HOME}/.config:${HOME}/.config
 

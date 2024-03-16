@@ -208,3 +208,8 @@
         + Replaced 'alpine' to '[base-distributions]'
         + Replaced mount directory '/root' to '${HOME}'
 
+#### 2322H
+- Updates
+    - Updated main docker-compose file 'docker-comose.yaml'
+        + Replaced mount directory '/root' to '${HOME}'
+
