@@ -39,7 +39,7 @@
 ### Using docker-compose
 - Build your base (stage 1) IDE docker image
     ```bash
-    docker build --tag=thanatisia/docker-ide:latest \
+    docker build --tag=thanatisia/docker-ide:[base-distribution] \
                  -f docker/Dockerfiles/[base-distribution]/programming-languages/[language].Dockerfile \
                  .
     ```
@@ -139,7 +139,7 @@
 - Using docker-compose environment
     - Build your base (stage 1) IDE docker image
         ```bash
-        docker build --tag=thanatisia/docker-ide:latest \
+        docker build --tag=thanatisia/docker-ide:[base-distribution] \
                      -f docker/Dockerfiles/[base-distribution]/programming-languages/[language].Dockerfile \
                      .
         ```
@@ -183,7 +183,7 @@
 - Using docker run
     - Build your base (stage 1) IDE docker image
         ```bash
-        docker build --tag=thanatisia/docker-ide:latest \
+        docker build --tag=thanatisia/docker-ide:[base-distribution] \
                      -f docker/Dockerfiles/[base-distribution]/programming-languages/[language].Dockerfile \
                      .
         ```
@@ -232,7 +232,7 @@
 - `STAGE_1_IMAGE_NAME` : Set the target name of the image to build
     + Default: thanatisia/docker-ide
 - `STAGE_1_IMAGE_TAG`  : Set the tag/version of the image to build
-    + Default: latest
+    + Default: `[base-distribution]`
 + `STAGE_1_BUILD_ARGS` : Specify the build arguments to parse into the build process
 - `STAGE_1_DOCKERFILE` : Specify the path to the custom Dockerfile to build
     + Default: 'docker/Dockerfiles/[base-distributions]/[language].Dockerfile'

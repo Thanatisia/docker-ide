@@ -213,3 +213,8 @@
     - Updated main docker-compose file 'docker-comose.yaml'
         + Replaced mount directory '/root' to '${HOME}'
 
+#### 2334H
+- Updates
+    - Updated document 'README.md'
+        + Replaced tag/version 'latest' to the pseudovariable 'base-distributions' (to be replaced with the user's intended base distribution image)
+
