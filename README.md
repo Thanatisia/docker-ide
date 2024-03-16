@@ -61,6 +61,8 @@
 - Design docker-compose.yaml file
     - Notes
         + You can find example docker-compose.yaml configuration files in the 'docker/compose' directory
+        - The 'build' instruction/key-value (dictionary) is optional if you have performed multi-staged builds as recommended previously
+            + You can use this if you are intending to use the base image directly
     ```yaml
     version: 3.7
     services:
@@ -157,6 +159,10 @@
                          .
             ```
     - Configure and Prepare your docker-compose.yaml file
+        - Notes
+            + You can find example docker-compose.yaml configuration files in the 'docker/compose' directory
+            - The 'build' instruction/key-value (dictionary) is optional if you have performed multi-staged builds as recommended previously
+                + You can use this if you are intending to use the base image directly
         ```yaml
         version: 3.7
         services:
