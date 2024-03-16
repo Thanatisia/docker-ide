@@ -60,6 +60,75 @@
     docker-compose restart {container-name}
     ```
 
+### Quickstart
+#### Creating a simple Development Environment
+- Using Makefile
+    + Configure the following Makefile environment variables
+    - Stop all running containers, Remove containers
+        ```bash
+        make -k stop remove
+        ```
+    - Build your base (stage 1) IDE docker image
+        ```bash
+        make build-stage-1
+        ```
+    - (Optional) Build all following stages 2 to N on top of your stage 1 docker image (Development Environment)
+        - Notes
+            + Ensure that you add build-stage-{3..N} manually at the current time because the Makefile at the moment only contains specifications for build stages 1 and 2
+        ```bash
+        make build-stage-2 build-stage-3 ... build-stage-N
+        ```
+    - Startup and run a new container using a target built image
+        ```bash
+        make run
+        ```
+    - Chroot and enter contaimer
+        ```bash
+        make enter
+        ```
+
+- Using docker run
+    - Build your base (stage 1) IDE docker image
+        ```bash
+        docker build --tag=thanatisia/docker-ide:latest \
+                     -f docker/Dockerfiles/[base-distribution]/programming-languages/[language].Dockerfile \
+                     .
+        ```
+    - (Optional) Build all following stages 2 to N on top of your stage 1 docker image (Development Environment)
+        - Additional patch docker image templates (Dockerfiles)
+            ```bash
+            docker build --tag=[author]/docker-ide:[tag|version] \
+                         -f docker/Dockerfiles/[base-distribution]/add-on-images/[patch-name].Dockerfile \
+                         .
+            ```
+        - Frameworks
+            ```bash
+            docker build --tag=[author]/docker-ide:[tag|version] \
+                         -f docker/Dockerfiles/[base-distribution]/frameworks/[framework].Dockerfile \
+                         .
+            ```
+    - Startup and run a new container using a target built image
+        ```bash
+        docker run -itd \
+            --name=[container-name] \
+            --restart=unless-stopped \
+            --workdir="/projects" \
+            -v "${PWD}/projects:/projects" \
+            -v "${HOME}/.config/:${HOME}/.config/" \
+            [author-name]/docker-ide:[tag|version]
+        ```
+    - Chroot and enter contaimer
+        ```bash
+        docker exec -it [container-name] [shell]
+        ```
+
+- (Optional) Add an alias mapping to the container's shell into your shell's resource control (rc) file for easy access
+    - Notes
+        + Useful for quick access to the development environment
+    ```bash
+    alias enter_dev_env="docker exec -it [your-container-name] $SHELL"
+    ```
+
 ## Makefile
 ### Variables
 #### General
