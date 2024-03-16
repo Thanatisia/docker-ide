@@ -187,3 +187,12 @@
     - Updated Dockerfile 'c.Dockerfile' in 'docker/Dockerfiles/alpine/programming-languages/'
         + Added '--no-cache' to apk add to compress the image size
 
+#### 2250H
+- Updates
+    - Updated docker-compose file 'c.docker-compose.yaml' in 'docker/compose/'
+        + Removed the other service entries except c
+    - Updated docker-compose file 'python.docker-compose.yaml' in 'docker/compose/'
+        + Removed the other service entries except python
+    - Updated docker-compose file 'rust.docker-compose.yaml' in 'docker/compose/'
+        + Removed the other service entries except rust
+
