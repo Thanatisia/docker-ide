@@ -1,5 +1,5 @@
 # Stage 2 Post-setup Dockerfile image template for building Neovim to the base image (Change the base image name accordingly)
-FROM thanatisia/docker-ide:latest AS neovim
+FROM thanatisia/docker-ide:alpine AS neovim
 
 # Set Arguments (Local Variables)
 

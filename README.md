@@ -9,6 +9,8 @@
 + docker
 + docker-compose
 
+### Pre-Requisites
+
 ### Using Host System
 > This repository is designed to be used with a containerization platform like Docker or LXC, and orchestration systems like Kubernetes (K8s), However, for educational purposes, the following steps is how you would set this up
 - Methodologies
@@ -35,6 +37,53 @@
     ```
 
 ### Using docker-compose
+- Build your base (stage 1) IDE docker image
+    ```bash
+    docker build --tag=thanatisia/docker-ide:latest \
+                 -f docker/Dockerfiles/[base-distribution]/programming-languages/[language].Dockerfile \
+                 .
+    ```
+
+- (Optional) Build all following stages 2 to N on top of your stage 1 docker image (Development Environment)
+    - Additional patch docker image templates (Dockerfiles)
+        ```bash
+        docker build --tag=[author]/docker-ide:[tag|version] \
+                     -f docker/Dockerfiles/[base-distribution]/add-on-images/[patch-name].Dockerfile \
+                     .
+        ```
+    - Frameworks
+        ```bash
+        docker build --tag=[author]/docker-ide:[tag|version] \
+                     -f docker/Dockerfiles/[base-distribution]/frameworks/[framework].Dockerfile \
+                     .
+        ```
+
+- Design docker-compose.yaml file
+    - Notes
+        + You can find example docker-compose.yaml configuration files in the 'docker/compose' directory
+    ```yaml
+    version: 3.7
+    services:
+      [programming-language]:
+        image: author-name/docker-ide:[programming-language]
+        container_name: dev-env-[programming-language]
+        build:
+          context: .
+          dockerfile: docker/Dockerfiles/[base-distribution]/programming-languages/[programming-language].Dockerfile
+        restart: unless-stopped
+        working_dir: /projects ## Set current working directory
+        stdin_open: true # Equivalent to '-i' in 'docker run -itd'
+        tty: true # Equivalent to '-t' in 'docker run -itd'
+        # ports:
+          ## Port Forward/Translate/Map from host system to container
+          ## [host-ip-address]:[host-system-port]:[container-port]
+        volumes:
+          ## Mount volumes from host system into container
+          ## [host-system-volume]:[container-volume]:[permissions]
+          - ${PWD}/projects/:/projects
+          - ${HOME}/.config:${HOME}/.config
+    ```
+
 - Startup compose environment
     ```bash
     docker-compose up -d --build
@@ -85,6 +134,50 @@
     - Chroot and enter contaimer
         ```bash
         make enter
+        ```
+
+- Using docker-compose environment
+    - Build your base (stage 1) IDE docker image
+        ```bash
+        docker build --tag=thanatisia/docker-ide:latest \
+                     -f docker/Dockerfiles/[base-distribution]/programming-languages/[language].Dockerfile \
+                     .
+        ```
+    - (Optional) Build all following stages 2 to N on top of your stage 1 docker image (Development Environment)
+        - Additional patch docker image templates (Dockerfiles)
+            ```bash
+            docker build --tag=[author]/docker-ide:[tag|version] \
+                         -f docker/Dockerfiles/[base-distribution]/add-on-images/[patch-name].Dockerfile \
+                         .
+            ```
+        - Frameworks
+            ```bash
+            docker build --tag=[author]/docker-ide:[tag|version] \
+                         -f docker/Dockerfiles/[base-distribution]/frameworks/[framework].Dockerfile \
+                         .
+            ```
+    - Configure and Prepare your docker-compose.yaml file
+        ```yaml
+        version: 3.7
+        services:
+          [programming-language]:
+            image: author-name/docker-ide:[programming-language]
+            container_name: dev-env-[programming-language]
+            build:
+              context: .
+              dockerfile: docker/Dockerfiles/[base-distribution]/programming-languages/[programming-language].Dockerfile
+            restart: unless-stopped
+            working_dir: /projects ## Set current working directory
+            stdin_open: true # Equivalent to '-i' in 'docker run -itd'
+            tty: true # Equivalent to '-t' in 'docker run -itd'
+            # ports:
+              ## Port Forward/Translate/Map from host system to container
+              ## [host-ip-address]:[host-system-port]:[container-port]
+            volumes:
+              ## Mount volumes from host system into container
+              ## [host-system-volume]:[container-volume]:[permissions]
+              - ${PWD}/projects/:/projects
+              - ${HOME}/.config:${HOME}/.config
         ```
 
 - Using docker run
@@ -235,13 +328,53 @@
     - docker-compose.yaml : Main docker-compose environment script/file
     - Makefile : Convenient make build file with targets/recipes to simplify running docker run
     - docs/ : Contains documentation folders
+        + customization.md : Tips and Tricks for customizing your IDE before and after starting up your container
+        + framework-setup.md : Framework and Library Development Environment setup documentation
         + language-setup.md : Programming Language Development Environment setup documentation
+        + project-environment-setup.md : Collection of Development Environment setup for general and Frequently-made project ideas
+        - makefiles/ : for holding Makefile templates for easy access to some frequently-used development environment usages (programming language, frameworks etc)
+            + c.Makefile     : Makefile template pre-configured with C-focused docker image naming scheme; Can be edited
+            + py.Makefile    : Makefile template pre-configured with Python-focused docker image naming scheme; Can be edited
+            + rust.Makefile  : Makefile template pre-configured with Rust-focused docker image naming scheme; Can be edited
     - docker/ : Contains docker-based resources/source files
+        - compose/ : Holds all docker-compose template/example configuration files
+            + c.docker-compose.yaml      : docker-compose.yaml file pre-configuredd with C-focused docker image naming scheme; Can be edited
+            + python.docker-compose.yaml : docker-compose.yaml file pre-configuredd with Python-focused docker image naming scheme; Can be edited
+            + rust.docker-compose.yaml   : docker-compose.yaml file pre-configuredd with Rust-focused docker image naming scheme; Can be edited
         - Dockerfiles/ : Contains all docker image templates (Dockerfile)
+            - agnostic/  : Contains distribution-agnostic/general dockerfile image patch files; Can be built on top of any built images (with pre-requisites)
+                + user-mgmt.Dockerfile : Installs and prepares User Management in the image
+            - alpine/    : The base image distribution of the dockerfile image template; This is using Alpine Linux
+                - add-on-images/ : Holds all alpine-related/apk-dependent patch Dockerfiles
+                    + essential-packages.Dockerfile : Collection of essential packages in a single Dockerfile to patch to your base image
+                    + nvim.Dockerfile : Clones and builds Neovim from Source to patch to your base image in a single Dockerfile 
+                - frameworks/ : Holds the docker image templates for all Framework/Library application development environments; This is using alpine (apk package manager) as the package management backend
+                - programming-languages/ : Holds the docker image templates for all Programming Languages development environments; This is using alpine (apk package manager) as the package management backend
+                    + c.Dockerfile : Image Template for setting up a working C programming language development environment
+                    + python.Dockerfile : Image Template for setting up a working Python scripting/programming language development environment
+                    + rust.Dockerfile : Image Template for setting up a working Rust programming language development environment
             - archlinux/ : The base image distribution of the dockerfile image template; This is using ArchLinux
-                + c.Dockerfile : Image Template for setting up a working C programming language development environment
-    - projects/ : This is the source directory that will be mounted into the container containing all your applications and projects
-        - c : This contains your C programming language source files
+                - add-on-images/ : Holds all archlinux-related/pacman-dependent patch Dockerfiles
+                    + essential-packages.Dockerfile : Collection of essential packages in a single Dockerfile to patch to your base image
+                    + nvim.Dockerfile : Clones and builds Neovim from Source to patch to your base image in a single Dockerfile 
+                - frameworks/ : Holds the docker image templates for all Framework/Library application development environments; This is using archlinux (pacman package manager) as the package management backend
+                - programming-languages/ : Holds the docker image templates for all Programming Languages development environments; This is using archlinux (pacman package manager) as the package management backend
+                    + c.Dockerfile : Image Template for setting up a working C programming language development environment
+                    + python.Dockerfile : Image Template for setting up a working Python scripting/programming language development environment
+                    + rust.Dockerfile : Image Template for setting up a working Rust programming language development environment
+            - debian/    : The base image distribution of the dockerfile image template; This is using Debian Linux
+                - add-on-images/ : Holds all debian-related/apt-dependent patch Dockerfiles
+                    + essential-packages.Dockerfile : Collection of essential packages in a single Dockerfile to patch to your base image
+                    + nvim.Dockerfile : Clones and builds Neovim from Source to patch to your base image in a single Dockerfile 
+                - frameworks/ : Holds the docker image templates for all Framework/Library application development environments; This is using debian (apt package manager) as the package management backend
+                - programming-languages/ : Holds the docker image templates for all Programming Languages development environments; This is using debian (apt package manager) as the package management backend
+                    + c.Dockerfile : Image Template for setting up a working C programming language development environment
+                    + python.Dockerfile : Image Template for setting up a working Python scripting/programming language development environment
+                    + rust.Dockerfile : Image Template for setting up a working Rust programming language development environment
+    - projects/ : This is the source directory that will be mounted into the container containing all your applications and projects; NOTE: This folder's contents are just suggestions and are not provided in the repository
+        - c/      : This contains your C programming language source files
+        - python/ : This contains your Python scripting/programming language source files
+        - rust/   : This contains your Rust programming language source files
 
 ## Wiki
 
