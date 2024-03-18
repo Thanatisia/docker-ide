@@ -82,3 +82,22 @@ services:
       - ${PWD}/projects/rust:/projects
       - ${HOME}/.config:${HOME}/.config
 
+  ##########################################################
+  # For starting up a React Native Development Environment #
+  ##########################################################
+  react-native:
+    image: thanatisia/docker-ide:react-native
+    container_name: dev-env-react-native
+    restart: unless-stopped
+    working_dir: /projects ## Set current working directory
+    stdin_open: true # Equivalent to '-i' in 'docker run -itd'
+    tty: true # Equivalent to '-t' in 'docker run -itd'
+    # ports:
+      ## Port Forward/Translate/Map from host system to container
+      ## [host-ip-address]:[host-system-port]:[container-port]
+    volumes:
+      ## Mount volumes from host system into container
+      ## [host-system-volume]:[container-volume]:[permissions]
+      - ${PWD}/projects/react-native:/projects
+      - ${HOME}/.config:${HOME}/.config
+

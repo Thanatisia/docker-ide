@@ -258,3 +258,8 @@
         + Added with information about android application development and react native files 
         + Updated filesystem structure
 
+#### 1651H
+- Updates
+    - Updated 'docker-compose.yaml'
+        + Added new example service 'react-native'
+
