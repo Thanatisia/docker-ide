@@ -27,7 +27,7 @@ RUN apk update && apk upgrade \
     && apk add --no-cache bash git make alpine-sdk shadow sudo coreutils curl unzip nodejs npm gradle \
     && apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community openjdk21-jdk \
     ## Install NPM packages
-    && npm install -g react-native-cli
+    && npm install -g yarn react-native@latest
 
 # Build external dependencies from Source
 ## Download and extract Android SDK Tools

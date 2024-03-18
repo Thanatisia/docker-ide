@@ -237,3 +237,8 @@
     - Updated document 'README.md'
         + Replaced 'Variables' with 'Build Argumnts'
 
+#### 1524H
+- Updates
+    - Updated Dockerfile 'react-native.Dockerfile' in 'docker/Dockerfiles/alpine/'
+        + Added new npm packages 'yarn' and 'react-native@latest'
+
