@@ -342,6 +342,8 @@
             + c.Makefile     : Makefile template pre-configured with C-focused docker image naming scheme; Can be edited
             + py.Makefile    : Makefile template pre-configured with Python-focused docker image naming scheme; Can be edited
             + rust.Makefile  : Makefile template pre-configured with Rust-focused docker image naming scheme; Can be edited
+            - frameworks/ : Contains Makefile templates pre-rconfigured for Framework/Library application development containers
+                + react-native.Makefile  : Makefile template pre-configured for React Native development environment docker containers; Can be edited
     - docker/ : Contains docker-based resources/source files
         - compose/ : Holds all docker-compose template/example configuration files
             + c.docker-compose.yaml      : docker-compose.yaml file pre-configuredd with C-focused docker image naming scheme; Can be edited
@@ -354,7 +356,10 @@
                 - add-on-images/ : Holds all alpine-related/apk-dependent patch Dockerfiles
                     + essential-packages.Dockerfile : Collection of essential packages in a single Dockerfile to patch to your base image
                     + nvim.Dockerfile : Clones and builds Neovim from Source to patch to your base image in a single Dockerfile 
+                - environments/ : Holds the docker image templates for all General project development environments; This is using alpine (apk package manager) as the package management backend
+                    + android-development.Dockerfile : Image Template for setting up a working Android mobile application development environment
                 - frameworks/ : Holds the docker image templates for all Framework/Library application development environments; This is using alpine (apk package manager) as the package management backend
+                    + react-native.Dockerfile : Image Template for setting up a working React Native cross-platform framework mobile application development environment
                 - programming-languages/ : Holds the docker image templates for all Programming Languages development environments; This is using alpine (apk package manager) as the package management backend
                     + c.Dockerfile : Image Template for setting up a working C programming language development environment
                     + python.Dockerfile : Image Template for setting up a working Python scripting/programming language development environment
@@ -363,6 +368,7 @@
                 - add-on-images/ : Holds all archlinux-related/pacman-dependent patch Dockerfiles
                     + essential-packages.Dockerfile : Collection of essential packages in a single Dockerfile to patch to your base image
                     + nvim.Dockerfile : Clones and builds Neovim from Source to patch to your base image in a single Dockerfile 
+                - environments/ : Holds the docker image templates for all General project development environments; This is using archlinux (pacman package manager) as the package management backend
                 - frameworks/ : Holds the docker image templates for all Framework/Library application development environments; This is using archlinux (pacman package manager) as the package management backend
                 - programming-languages/ : Holds the docker image templates for all Programming Languages development environments; This is using archlinux (pacman package manager) as the package management backend
                     + c.Dockerfile : Image Template for setting up a working C programming language development environment
@@ -372,6 +378,7 @@
                 - add-on-images/ : Holds all debian-related/apt-dependent patch Dockerfiles
                     + essential-packages.Dockerfile : Collection of essential packages in a single Dockerfile to patch to your base image
                     + nvim.Dockerfile : Clones and builds Neovim from Source to patch to your base image in a single Dockerfile 
+                - environments/ : Holds the docker image templates for all General project development environments; This is using debian (apt package manager) as the package management backend
                 - frameworks/ : Holds the docker image templates for all Framework/Library application development environments; This is using debian (apt package manager) as the package management backend
                 - programming-languages/ : Holds the docker image templates for all Programming Languages development environments; This is using debian (apt package manager) as the package management backend
                     + c.Dockerfile : Image Template for setting up a working C programming language development environment

@@ -249,3 +249,12 @@
     - Updated document 'project-environment-setup.md' in 'docs/'
         + Added new entry 'Android Mobile Application Development'
 
+#### 1640H
+- New
+    + Added new docker-compose.yaml file 'react-native.docker-compose.yaml' in 'docker/compose' for starting up a React Native framework development environment via docker-compose
+
+- Updates
+    - Updated README.md
+        + Added with information about android application development and react native files 
+        + Updated filesystem structure
+
