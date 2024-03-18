@@ -242,3 +242,10 @@
     - Updated Dockerfile 'react-native.Dockerfile' in 'docker/Dockerfiles/alpine/'
         + Added new npm packages 'yarn' and 'react-native@latest'
 
+#### 1547H
+- Updates
+    - Updated document 'framework-setup.md' in 'docs/'
+        + Added new entry 'React Native'
+    - Updated document 'project-environment-setup.md' in 'docs/'
+        + Added new entry 'Android Mobile Application Development'
+
