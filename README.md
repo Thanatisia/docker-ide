@@ -229,7 +229,7 @@
     ```
 
 ## Makefile
-### Variables
+### Build Arguments
 #### General
 - `CONTEXT` : Specify the context (current working directory) of the host system when starting the build/run
     + Default: . (Current working directory)
