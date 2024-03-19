@@ -315,3 +315,7 @@
     - Updated 'Makefile'
         + Shuffled 'CONTEXT' to the top
 
+#### 2101H
+- New
+    + Added new document 'dockerfile-build-args.md' in 'docs/': To store all Build arguments in as many of the Dockerfiles as possible
+
