@@ -4,6 +4,7 @@
 + [2024-03-14](#2024-03-14)
 + [2024-03-15](#2024-03-15)
 + [2024-03-16](#2024-03-16)
++ [2024-03-18](#2024-03-18)
 
 ## Entry Logs
 ### 2024-03-14
@@ -222,4 +223,43 @@
 - Updates
     - Updated document 'README.md'
         + Added notes for the 'build' key-value in 'docker-compose.yaml'
+
+### 2024-03-18
+#### 1406H
+- New
+    - Added new directory 'environments' in 'docker/Dockerfiles/alpine/' : To hold Dockerfiles for setting up a generalized non-programming/framework project development environment
+        + Added new Dockerfile 'android-development.Dockerfile': Docker image template file for building and setting up a proper Android Mobile Application Development Environment
+    - Added new directory 'frameworks' in 'docker/Dockerfiles/alpine/' : To hold Dockerfiles for setting up framework and library application development environment
+        + Added new Dockerfile 'react-native.Dockerfile': Docker image template file for building and setting up a proper React Native framework/library application development environment
+    - Added new directory 'frameworks' in 'docs/makefiles/' for holding Makefile templates for easy access to some frequently-used framework/application development environment usages
+        + react-native.Makefile : for building and managing React Native framework/library development environment docker image/container
+- Updates
+    - Updated document 'README.md'
+        + Replaced 'Variables' with 'Build Argumnts'
+
+#### 1524H
+- Updates
+    - Updated Dockerfile 'react-native.Dockerfile' in 'docker/Dockerfiles/alpine/'
+        + Added new npm packages 'yarn' and 'react-native@latest'
+
+#### 1547H
+- Updates
+    - Updated document 'framework-setup.md' in 'docs/'
+        + Added new entry 'React Native'
+    - Updated document 'project-environment-setup.md' in 'docs/'
+        + Added new entry 'Android Mobile Application Development'
+
+#### 1640H
+- New
+    + Added new docker-compose.yaml file 'react-native.docker-compose.yaml' in 'docker/compose' for starting up a React Native framework development environment via docker-compose
+
+- Updates
+    - Updated README.md
+        + Added with information about android application development and react native files 
+        + Updated filesystem structure
+
+#### 1651H
+- Updates
+    - Updated 'docker-compose.yaml'
+        + Added new example service 'react-native'
 
