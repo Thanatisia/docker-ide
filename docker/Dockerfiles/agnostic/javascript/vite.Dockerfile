@@ -9,7 +9,7 @@ FROM ${BASE_IMAGE_NAME}:${BASE_IMAGE_TAG} AS base
 
 # Update package manager database, Upgrade repository packages and Install dependencies
 ## Install NPM packages
-RUN npm install -g vite@latest
+RUN npm install -g vite@latest create-vite@latest
 
 # Build external dependencies from Source
 

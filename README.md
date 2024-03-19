@@ -244,20 +244,16 @@
     + Default: 'docker/Dockerfiles/[base-distributions]/[language].Dockerfile'
 
 #### Stage N (Multistaged build - Add-on Dockerfiles)
-- `STAGE_2_IMAGE_NAME` : Set the target name of the image to build
+> NOTE: Please initialize a new set of the following for every build stages you require in your Makefile (i.e. N=2 for Build Stage 2, N=3 for Build Stage 3...) and add a new set of the 'build-stage-N' target
+
+- `STAGE_N_IMAGE_NAME` : Set the target name of the image to build
     + Default: thanatisia/docker-ide
-- `STAGE_2_IMAGE_TAG`  : Set the tag/version of the image to build
+- `STAGE_N_IMAGE_TAG`  : Set the tag/version of the image to build
     + Default: [programming-language]
-- `STAGE_2_BUILD_ARGS` : Specify the build arguments to parse into the build process
-    - Default Values 
-        + `--build-arg "USER_NAME=${USER}"`
-        + `--build-arg "USER_PRIMARY_GROUP=wheel"`
-        + `--build-arg "USER_SECONDARY_GROUPS=users"`
-        + `--build-arg "USER_SHELL=/bin/bash"`
-        + `--build-arg "USER_DEFAULT_HOME=${HOME}"`
-        + `--build-arg "USER_OPTS=-m"`
-- `STAGE_2_DOCKERFILE` : Specify the path to the custom Dockerfile to build
-    + Default: 'docker/Dockerfiles/stage-2/user-mgmt.Dockerfile'
+- `STAGE_N_BUILD_ARGS` : Specify the build arguments to parse into the build process
+    + Format: `--build-arg "ARGUMENT=VALUE"`
+- `STAGE_N_DOCKERFILE` : Specify the path to the custom Dockerfile to build
+    + Default: 'docker/Dockerfiles/[base-distributions]/add-on-images/nvim.Dockerfile'
 
 #### Containers
 - `CONTAINER_IMAGE_NAME` : Specify the docker image to startup the container with

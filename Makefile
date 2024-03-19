@@ -5,6 +5,9 @@
 
 ### Images
 
+#### General
+CONTEXT ?= .
+
 #### Stage 1 (Base)
 STAGE_1_IMAGE_NAME ?= thanatisia/docker-ide
 STAGE_1_IMAGE_TAG ?= [base-distributions|latest]
@@ -16,7 +19,6 @@ STAGE_2_IMAGE_NAME ?= thanatisia/docker-ide
 STAGE_2_IMAGE_TAG ?= [programming-languages|latest]
 STAGE_2_BUILD_ARGS ?=  # Set Build Arguments; Format: --build-arg "ARGUMENT=VALUE"
 STAGE_2_DOCKERFILE ?= docker/Dockerfiles/[base-distributions]/add-on-images/nvim.Dockerfile
-CONTEXT ?= .
 
 ### Containers
 CONTAINER_IMAGE_NAME ?= thanatisia/docker-ide
