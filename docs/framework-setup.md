@@ -97,6 +97,81 @@
 
 #### Build Process and Compilation
 
+### SvelteJS
+#### Setup
+##### Dependencies
++ node
++ npm
+- npm packages
+    + svelte@latest
+    + create-svelte
+##### Pre-Requisites
+##### Useful Tools
+#### System Environment
+#### Build process and compilation
+- Create a new project using a template
+    - Explanation
+        + This will use the 'create-svelte' package to generate a new project using svelte as the template
+    ```bash
+    npm create svelte@latest [project-name]
+    ```
+
+- Change directory into project
+    ```bash
+    cd [project-name]
+    ```
+
+- Install node package
+    ```bash
+    npm install
+    ```
+
+- To run the webserver
+    ```bash
+    npm run dev
+    ```
+
+### Vite
+#### Setup
+##### Dependencies
++ node
++ npm
+- npm packages
+    + vite@latest
+    + create-vite
+##### Pre-Requisites
+##### Useful Tools
+#### System Environment
+#### Build process and compilation
+- Create a new project using a template
+    - SvelteJS
+        - Explanation
+            + This will use the 'create-vite' package to generate a new project using svelte as the template
+        ```bash
+        npm create vite@latest [project-name] -- --template svelte
+        ```
+    - Svelte Typescript
+        - Explanation
+            + This will use the 'create-vite' package to generate a new project using svelte (typescript) as the template
+        ```bash
+        npm create vite@latest [project-name] -- --template svelte-ts
+        ```
+
+- Change directory into project
+    ```bash
+    cd [project-name]
+    ```
+
+- Install node package
+    ```bash
+    npm install
+    ```
+
+- To run the webserver
+    ```bash
+    npm run dev
+    ```
+
 ## Wiki
 
 ## Resources

@@ -299,3 +299,12 @@
     - Updated Dockerfile 'javascript.Dockerfile' in 'docker/Dockerfiles/alpine/programming-languages/'
         + Added new package 'npm'
 
+#### 1602H
+- Updates
+    - Updated Dockerfile 'svelte.Dockerfile' in 'docker/Dockerfiles/agnostic/javascript/'
+        + Added new dependenc(ies)
+    - Updated Dockerfile 'vite.Dockerfile' in 'docker/Dockerfiles/agnostic/javascript/'
+        + Added new dependenc(ies)
+    - Updated document 'framework-setup.md' in 'docs/'
+        + Added setup documentation for javascript frameworks 'Svelte' and 'Vite'
+
