@@ -319,3 +319,12 @@
 - New
     + Added new document 'dockerfile-build-args.md' in 'docs/': To store all Build arguments in as many of the Dockerfiles as possible
 
+#### 2110H
+- Updates
+    - Updated Dockerfile 'nvim.Dockerfile' in 'docs/Dockerfiles/alpine/add-on-images'
+        + Added dependency 'git'
+    - Updated Dockerfile 'nvim.Dockerfile' in 'docs/Dockerfiles/archlinux/add-on-images'
+        + Added dependency 'git'
+    - Updated Dockerfile 'nvim.Dockerfile' in 'docs/Dockerfiles/debian/add-on-images'
+        + Added dependency 'git'
+
