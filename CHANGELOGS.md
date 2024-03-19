@@ -294,3 +294,8 @@
     - Updated document 'Makefile'
         + Cleaned up and made the template more generic
 
+#### 1511H
+- Updates
+    - Updated Dockerfile 'javascript.Dockerfile' in 'docker/Dockerfiles/alpine/programming-languages/'
+        + Added new package 'npm'
+

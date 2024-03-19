@@ -5,7 +5,7 @@ FROM ${BASE_IMAGE_NAME}:${BASE_IMAGE_TAG} AS base
 
 # Update package manager database, Upgrade repository packages and Install dependencies
 RUN apk update && apk upgrade \
-    && apk add --no-cache bash git make alpine-sdk shadow sudo coreutils nodejs
+    && apk add --no-cache bash git make alpine-sdk shadow sudo coreutils nodejs npm
 
 # Build external dependencies from Source
 
