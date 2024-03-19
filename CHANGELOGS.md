@@ -5,6 +5,7 @@
 + [2024-03-15](#2024-03-15)
 + [2024-03-16](#2024-03-16)
 + [2024-03-18](#2024-03-18)
++ [2024-03-19](#2024-03-19)
 
 ## Entry Logs
 ### 2024-03-14
@@ -262,4 +263,39 @@
 - Updates
     - Updated 'docker-compose.yaml'
         + Added new example service 'react-native'
+
+### 2024-03-19
+#### 0931H
+- New
+    - Added new directory 'javascript' in 'docker/Dockerfiles/agnostic/'
+        + Added new Dockerfile 'svelte.Dockerfile': Docker image template file for building and setting up a proper SvelteJS Web framework/library application development environment
+        + Added new Dockerfile 'tailwind.Dockerfile': Docker image template file for building and setting up a proper Tailwind CSS Frontend framework/library application development environment
+        + Added new Dockerfile 'vite.Dockerfile': Docker image template file for building and setting up a proper Vite framework/library application development environment
+    + Added new document 'javascript.Dockerfile' in 'docker/Dockerfiles/alpine/programming-languages/': Docker image template file for building and setting up a proper (HTML5 + CSS3) Javascript Web Server Application Development Environment
+    + Added new Makefile 'javascript.Makefile' in 'docs/makefiles/': for a Javascript Web Application development environment
+
+- Updates
+    - Updated Dockerfile 'user-mgmt.Dockerfile' in 'docker/Dockerfiles/agnostic/'
+        + Replaced base image with build arguments 'BASE_IMAGE_NAME' and 'BASE_IMAGE_TAG'
+    - Updated Dockerfile 'essential-packages.Dockerfile' in 'docker/Dockerfiles/alpine/add-on-images/'
+        + Replaced base image with build arguments 'BASE_IMAGE_NAME' and 'BASE_IMAGE_TAG'
+    - Updated Dockerfile 'nvim.Dockerfile' in 'docker/Dockerfiles/alpine/add-on-images/'
+        + Replaced base image with build arguments 'BASE_IMAGE_NAME' and 'BASE_IMAGE_TAG'
+    - Updated Dockerfile 'android-development.Dockerfile' in 'docker/Dockerfiles/alpine/environments/'
+        + Replaced base image with build arguments 'BASE_IMAGE_NAME' and 'BASE_IMAGE_TAG'
+    - Updated Dockerfile 'react-native.Dockerfile' in 'docker/Dockerfiles/alpine/frameworks/'
+        + Replaced base image with build arguments 'BASE_IMAGE_NAME' and 'BASE_IMAGE_TAG'
+    - Updated Dockerfile 'c.Dockerfile' in 'docker/Dockerfiles/alpine/programming-languages/'
+        + Replaced base image with build arguments 'BASE_IMAGE_NAME' and 'BASE_IMAGE_TAG'
+    - Updated Dockerfile 'python.Dockerfile' in 'docker/Dockerfiles/alpine/programming-languages/'
+        + Replaced base image with build arguments 'BASE_IMAGE_NAME' and 'BASE_IMAGE_TAG'
+    - Updated Dockerfile 'rust.Dockerfile' in 'docker/Dockerfiles/alpine/programming-languages/'
+        + Replaced base image with build arguments 'BASE_IMAGE_NAME' and 'BASE_IMAGE_TAG'
+    - Updated document 'Makefile'
+        + Cleaned up and made the template more generic
+
+#### 1511H
+- Updates
+    - Updated Dockerfile 'javascript.Dockerfile' in 'docker/Dockerfiles/alpine/programming-languages/'
+        + Added new package 'npm'
 

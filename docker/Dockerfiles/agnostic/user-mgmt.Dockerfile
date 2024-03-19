@@ -1,5 +1,7 @@
 # Stage 2 Post-setup Dockerfile image template for adding user to an IDE base image
-FROM thanatisia/docker-ide:latest AS stage-2
+ARG BASE_IMAGE_NAME="thanatisia/docker-ide"
+ARG BASE_IMAGE_TAG="latest"
+FROM ${BASE_IMAGE_NAME}:${BASE_IMAGE_TAG} AS stage-2
 
 # Set Arguments (Local Variables)
 ARG USER_NAME="$USER"

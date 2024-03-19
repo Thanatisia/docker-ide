@@ -1,5 +1,7 @@
 # Dockerfile image template for setting up a Rust programming integrated development environment (IDE)
-FROM alpine:latest AS base
+ARG BASE_IMAGE_NAME="alpine"
+ARG BASE_IMAGE_TAG="latest"
+FROM ${BASE_IMAGE_NAME}:${BASE_IMAGE_TAG} AS base
 
 # Update package manager database, Upgrade repository packages and Install dependencies
 RUN apk update && apk upgrade \
