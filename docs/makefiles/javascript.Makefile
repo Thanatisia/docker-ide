@@ -7,21 +7,27 @@
 
 #### Stage 1 (Base)
 STAGE_1_IMAGE_NAME ?= thanatisia/docker-ide
-STAGE_1_IMAGE_TAG ?= [base-distributions|latest]
-STAGE_1_BUILD_ARGS ?=  # Set Build Arguments; Format: --build-arg "ARGUMENT=VALUE"
-STAGE_1_DOCKERFILE ?= docker/Dockerfiles/[base-distributions]/programming-languages/[programming-languages].Dockerfile
+STAGE_1_IMAGE_TAG ?= [base-distribution]
+STAGE_1_BUILD_ARGS ?= --build-arg BASE_IMAGE_NAME="[base-distribution]" \
+					  --build-arg BASE_IMAGE_TAG="latest"
+STAGE_1_DOCKERFILE ?= docker/Dockerfiles/[base-distribution]/programming-languages/javascript.Dockerfile
 
 #### Stage N (Multistaged build - Add-on Dockerfiles)
 STAGE_2_IMAGE_NAME ?= thanatisia/docker-ide
-STAGE_2_IMAGE_TAG ?= [programming-languages|latest]
-STAGE_2_BUILD_ARGS ?=  # Set Build Arguments; Format: --build-arg "ARGUMENT=VALUE"
-STAGE_2_DOCKERFILE ?= docker/Dockerfiles/[base-distributions]/add-on-images/nvim.Dockerfile
+STAGE_2_IMAGE_TAG ?= javascript
+STAGE_2_BUILD_ARGS ?= # --build-arg "USER_NAME=${USER}" \
+              --build-arg "USER_PRIMARY_GROUP=wheel" \
+			  --build-arg "USER_SECONDARY_GROUPS=users" \
+			  --build-arg "USER_SHELL=/bin/bash" \
+			  --build-arg "USER_DEFAULT_HOME=${HOME}" \
+			  --build-arg "USER_OPTS=-m" # Set Build Arguments
+STAGE_2_DOCKERFILE ?= docker/Dockerfiles/[base-distribution]/add-on-images/nvim.Dockerfile
 CONTEXT ?= .
 
 ### Containers
 CONTAINER_IMAGE_NAME ?= thanatisia/docker-ide
-CONTAINER_IMAGE_TAG ?= [programming-languages]
-CONTAINER_NAME ?= dev-env-[programming-languages]
+CONTAINER_IMAGE_TAG ?= javascript
+CONTAINER_NAME ?= dev-env-javascript
 CONTAINER_OPTS ?= \
 				  --restart=unless-stopped \
 				  --workdir=/projects # Other Options; i.e. --user=${USER}
