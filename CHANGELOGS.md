@@ -308,3 +308,10 @@
     - Updated document 'framework-setup.md' in 'docs/'
         + Added setup documentation for javascript frameworks 'Svelte' and 'Vite'
 
+#### 2039H
+- Updates
+    - Updated document 'README.md'
+        + Reorganized Build Arguments
+    - Updated 'Makefile'
+        + Shuffled 'CONTEXT' to the top
+
