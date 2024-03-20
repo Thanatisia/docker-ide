@@ -6,6 +6,7 @@
 + [2024-03-16](#2024-03-16)
 + [2024-03-18](#2024-03-18)
 + [2024-03-19](#2024-03-19)
++ [2024-03-20](#2024-03-20)
 
 ## Entry Logs
 ### 2024-03-14
@@ -327,4 +328,13 @@
         + Added dependency 'git'
     - Updated Dockerfile 'nvim.Dockerfile' in 'docs/Dockerfiles/debian/add-on-images'
         + Added dependency 'git'
+
+### 2024-03-20
+#### 2053H
+- New
+    + Added new Dockerfile 'sveltekit.Dockerfile' in 'docker/Dockerfiles/agnostic/javascript/': Docker image template file for building and setting up a proper SvelteKit Fullstack Web framework/library application development environment
+
+- Updates
+    - Updated document 'framework-setup.md' in 'docs/'
+        + Added new documentations for setting up SvelteKit
 
