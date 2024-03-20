@@ -338,3 +338,7 @@
     - Updated document 'framework-setup.md' in 'docs/'
         + Added new documentations for setting up SvelteKit
 
+#### 2142H
+- New
+    + Added new Dockerfile 'typescript.Dockerfile' in 'docker/Dockerfiles/agnostic/javascript/' for setting up a simple Typescript development environment into a base image
+    + Added new Dockerfile 'typescript-language-server.Dockerfile' in 'docker/Dockerfiles/agnostic/language-servers/' to integrate the typescript/javascript LSP server 'typescript-langauge-server' into the base image
