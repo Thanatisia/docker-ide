@@ -342,3 +342,8 @@
 - New
     + Added new Dockerfile 'typescript.Dockerfile' in 'docker/Dockerfiles/agnostic/javascript/' for setting up a simple Typescript development environment into a base image
     + Added new Dockerfile 'typescript-language-server.Dockerfile' in 'docker/Dockerfiles/agnostic/language-servers/' to integrate the typescript/javascript LSP server 'typescript-langauge-server' into the base image
+
+#### 2159H
+- New
+    + Added new Dockerfile 'pyright.Dockerfile' in 'docker/Dockerfiles/agnostic/language-servers/' to integrate the Python LSP server 'pyright' into the base image
+
