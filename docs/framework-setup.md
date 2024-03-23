@@ -131,6 +131,41 @@
     npm run dev
     ```
 
+### SvelteKit
+#### Setup
+##### Dependencies
++ node
++ npm
+- npm packages
+    + svelte@latest
+    + create-svelte
+    + vite@latest
+##### Pre-Requisites
+##### Useful Tools
+#### System Environment
+#### Build process and compilation
+- Create a new project using a template
+    - Explanation
+        + This will use the 'create-svelte' package to generate a new project using svelte as the template
+    ```bash
+    npm create svelte@latest [project-name]
+    ```
+
+- Change directory into project
+    ```bash
+    cd [project-name]
+    ```
+
+- Install node package
+    ```bash
+    npm install
+    ```
+
+- To run the webserver
+    ```bash
+    npm run dev
+    ```
+
 ### Vite
 #### Setup
 ##### Dependencies

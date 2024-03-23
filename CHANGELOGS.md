@@ -6,6 +6,7 @@
 + [2024-03-16](#2024-03-16)
 + [2024-03-18](#2024-03-18)
 + [2024-03-19](#2024-03-19)
++ [2024-03-20](#2024-03-20)
 
 ## Entry Logs
 ### 2024-03-14
@@ -314,4 +315,35 @@
         + Reorganized Build Arguments
     - Updated 'Makefile'
         + Shuffled 'CONTEXT' to the top
+
+#### 2101H
+- New
+    + Added new document 'dockerfile-build-args.md' in 'docs/': To store all Build arguments in as many of the Dockerfiles as possible
+
+#### 2110H
+- Updates
+    - Updated Dockerfile 'nvim.Dockerfile' in 'docs/Dockerfiles/alpine/add-on-images'
+        + Added dependency 'git'
+    - Updated Dockerfile 'nvim.Dockerfile' in 'docs/Dockerfiles/archlinux/add-on-images'
+        + Added dependency 'git'
+    - Updated Dockerfile 'nvim.Dockerfile' in 'docs/Dockerfiles/debian/add-on-images'
+        + Added dependency 'git'
+
+### 2024-03-20
+#### 2053H
+- New
+    + Added new Dockerfile 'sveltekit.Dockerfile' in 'docker/Dockerfiles/agnostic/javascript/': Docker image template file for building and setting up a proper SvelteKit Fullstack Web framework/library application development environment
+
+- Updates
+    - Updated document 'framework-setup.md' in 'docs/'
+        + Added new documentations for setting up SvelteKit
+
+#### 2142H
+- New
+    + Added new Dockerfile 'typescript.Dockerfile' in 'docker/Dockerfiles/agnostic/javascript/' for setting up a simple Typescript development environment into a base image
+    + Added new Dockerfile 'typescript-language-server.Dockerfile' in 'docker/Dockerfiles/agnostic/language-servers/' to integrate the typescript/javascript LSP server 'typescript-langauge-server' into the base image
+
+#### 2159H
+- New
+    + Added new Dockerfile 'pyright.Dockerfile' in 'docker/Dockerfiles/agnostic/language-servers/' to integrate the Python LSP server 'pyright' into the base image
 
